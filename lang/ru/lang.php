@@ -1,6 +1,6 @@
 <?php return [
     'plugin' => [
         'name' => 'Excel',
-        'description' => ''
+        'description' => 'OctoberCMS обертка для Maatwebsite/Laravel-Excel'
     ]
 ];

@@ -13,14 +13,4 @@ class Plugin extends PluginBase
     public function registerSettings()
     {
     }
-
-    public function boot()
-    {
-        // Register service providers
-        App::register('\Maatwebsite\Excel\ExcelServiceProvider');
-
-        $facade = AliasLoader::getInstance();
-        $facade->alias('Excel', '\Maatwebsite\Excel\Facades\Excel');
-        $excel = App::make('excel');
-    }
 }
