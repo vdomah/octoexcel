@@ -5,12 +5,12 @@ The complete documentation can be found at: http://www.maatwebsite.nl/laravel-ex
 
 ## Upgrading from 2.x to 3.x version of Maatwebsite.Laravel-Excel.
 
-#####Changes in Vdomah\Excel\Classes\Excel class 
+###Changes in Vdomah\Excel\Classes\Excel class 
 - use of Singleton trait
 - use instance() method instead of getInstance()
 - export method added which implements Excel::download method of Maatwebsite.Laravel-Excel v3
 
-####Example export from page code section
+###Example export from page code section
 ````
 use Vdomah\Excel\Classes\Excel;
 use Vdomah\Excel\Classes\ExportExample;
@@ -20,7 +20,7 @@ function onStart()
 }
 ````
 
-####New export code paradigm
+###New export code paradigm
 Now instead of closures in v2 you need to create new class to export your data in v3. 
 The main goal while moving from v2 to v3 is to pass your export data into collection() method of your Export class (see demo using faker).
 Example export class is provided with plugin: 
