@@ -21,6 +21,8 @@ class Excel
         Sheet::macro('freezePane', function (Sheet $sheet, $pane) {
             $sheet->getDelegate()->getActiveSheet()->freezePane($pane);  // <-- https://stackoverflow.com/questions/49678273/setting-active-cell-for-excel-generated-by-phpspreadsheet
         });
+
+        \PhpOffice\PhpSpreadsheet\IOFactory::registerReader('xlsx_styled', XlsxStyled::class);
     }
     
     public static function excel()

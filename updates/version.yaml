@@ -7,3 +7,5 @@
 3.0.1: !!! Migration to Maatwebsite.Laravel-Excel version 3.x.
 3.0.2:
     - File types restriction removed from export method. Added import shortcut method
+3.0.3:
+    - Added xlsx_styled reader type to fix error in Phpoffice/PhpSpreadsheet with custom styled .xlsx files.
