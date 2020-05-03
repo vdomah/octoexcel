@@ -28,16 +28,22 @@ class Excel
         return self::instance()->excel;
     }
 
-    public static function export($class, $filename, $type = 'csv')
+    public static function export($object, $filename, $type = 'csv')
     {
-        if (! in_array($type, ['xls', 'csv'])) {
-            $type = 'csv';
+        if (is_string($object) && class_exists($object)) {
+            $object = new $object;
         }
 
-        $fn = $filename;
-
-        return self::excel()->download(new $class, $fn.'.'.$type);
+        return self::excel()->download($object, $filename.'.'.$type);
     }
 
+    public static function import($object, $file_path)
+    {
+        if (is_string($object) && class_exists($object)) {
+            $object = new $object;
+        }
+
+        return self::excel()->import($object, $file_path);
+    }
 
 }

@@ -28,14 +28,20 @@ class ExportExample implements FromCollection, WithHeadings, WithEvents
     // get the data
     public function collection()
     {
+        //example returning all users
+        //return User::all();
+
+        //example returning faker data
         $data = [];
 
-        $faker = \Faker\Factory::create();
+        if (class_exists('\Faker\Factory')) {
+            $faker = \Faker\Factory::create();
 
-        $limit = 10;
+            $limit = 10;
 
-        for ($i = 0; $i < $limit; $i++) {
-            $data[] = [$faker->name, $faker->word, 'N', $faker->postcode, $faker->word, $faker->word];
+            for ($i = 0; $i < $limit; $i++) {
+                $data[] = [$faker->name, $faker->word, 'N', $faker->postcode, $faker->word, $faker->word];
+            }
         }
 
         return collect($data);
