@@ -9,3 +9,5 @@
     - File types restriction removed from export method. Added import shortcut method
 3.0.3:
     - Added xlsx_styled reader type to fix error in Phpoffice/PhpSpreadsheet with custom styled .xlsx files.
+3.0.4:
+    - Update for compatibility with Laravel 6
