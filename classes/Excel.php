@@ -47,5 +47,14 @@ class Excel
 
         return self::excel()->import($object, $file_path);
     }
+    
+    public static function store($object, $filename, $diskName = null)
+    {
+        if (is_string($object) && class_exists($object)) {
+            $object = new $object;
+        }
+
+        return self::excel()->store($object, $filename, $diskName);
+    }
 
 }
