@@ -11,3 +11,5 @@
     - Added xlsx_styled reader type to fix error in Phpoffice/PhpSpreadsheet with custom styled .xlsx files.
 3.0.4:
     - Update for compatibility with Laravel 6
+3.0.5:
+    - Compatibility with PhpOffice\PhpSpreadsheet\Reader\IReader
