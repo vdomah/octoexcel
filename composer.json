@@ -1,6 +1,7 @@
 {
   "name": "vdomah/excel",
   "description": "OctoberCMS wrapper for Maatwebsite/Laravel-Excel",
+  "type": "october-plugin",
   "keywords": [
     "october",
     "excel",
