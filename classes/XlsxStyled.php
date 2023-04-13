@@ -322,7 +322,7 @@ class XlsxStyled extends BaseReader
      *
      * @return Spreadsheet
      */
-    public function load(string $pFilename, int $flags = 0)
+    public function load(string $pFilename, int $flags = 0): Spreadsheet
     {
         File::assertFile($pFilename);
 
