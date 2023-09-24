@@ -316,15 +316,15 @@ class XlsxStyled extends BaseReader
     /**
      * Loads Spreadsheet from file.
      *
-     * @param string $pFilename
-     *
-     * @throws Exception
-     *
+     * @param string $filename
+     * @param int $flags
      * @return Spreadsheet
+     * @throws Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
      */
-    public function load(string $pFilename, int $flags = 0)
+    public function load(string $filename, int $flags = 0): Spreadsheet
     {
-        File::assertFile($pFilename);
+        File::assertFile($filename);
 
         // Initialisations
         $excel = new Spreadsheet();
@@ -336,7 +336,7 @@ class XlsxStyled extends BaseReader
         $unparsedLoadedData = [];
 
         $zip = new ZipArchive();
-        $zip->open($pFilename);
+        $zip->open($filename);
 
         //    Read the theme first, because we need the colour scheme when reading the styles
         //~ http://schemas.openxmlformats.org/package/2006/relationships"
@@ -1044,7 +1044,7 @@ class XlsxStyled extends BaseReader
                                                     $hfImages[(string) $shape['id']]->setName((string) $imageData['title']);
                                                 }
 
-                                                $hfImages[(string) $shape['id']]->setPath('zip://' . File::realpath($pFilename) . '#' . $drawings[(string) $imageData['relid']], false);
+                                                $hfImages[(string) $shape['id']]->setPath('zip://' . File::realpath($filename) . '#' . $drawings[(string)$imageData['relid']], false);
                                                 $hfImages[(string) $shape['id']]->setResizeProportional(false);
                                                 $hfImages[(string) $shape['id']]->setWidth($style['width']);
                                                 $hfImages[(string) $shape['id']]->setHeight($style['height']);
@@ -1132,7 +1132,7 @@ class XlsxStyled extends BaseReader
                                                     $objDrawing->setName((string) self::getArrayItem($oneCellAnchor->pic->nvPicPr->cNvPr->attributes(), 'name'));
                                                     $objDrawing->setDescription((string) self::getArrayItem($oneCellAnchor->pic->nvPicPr->cNvPr->attributes(), 'descr'));
                                                     $objDrawing->setPath(
-                                                        'zip://' . File::realpath($pFilename) . '#' .
+                                                        'zip://' . File::realpath($filename) . '#' .
                                                         $images[(string) self::getArrayItem(
                                                             $blip->attributes('http://schemas.openxmlformats.org/officeDocument/2006/relationships'),
                                                             'embed'
@@ -1184,7 +1184,7 @@ class XlsxStyled extends BaseReader
                                                     $objDrawing->setName((string) self::getArrayItem($twoCellAnchor->pic->nvPicPr->cNvPr->attributes(), 'name'));
                                                     $objDrawing->setDescription((string) self::getArrayItem($twoCellAnchor->pic->nvPicPr->cNvPr->attributes(), 'descr'));
                                                     $objDrawing->setPath(
-                                                        'zip://' . File::realpath($pFilename) . '#' .
+                                                        'zip://' . File::realpath($filename) . '#' .
                                                         $images[(string) self::getArrayItem(
                                                             $blip->attributes('http://schemas.openxmlformats.org/officeDocument/2006/relationships'),
                                                             'embed'
